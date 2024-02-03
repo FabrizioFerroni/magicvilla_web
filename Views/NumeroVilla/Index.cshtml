@@ -1,0 +1,42 @@
+﻿@model IEnumerable<MagicVilla_MVC.Models.Dto.NumeroVillaResponse>
+@{
+    ViewData["Title"] = "Numero Villa";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container p-4 border">
+    <div class="row pb-2">
+        <div class="col">
+            <h1 class="text-primary">Lista de Numero de Villas</h1>
+        </div>
+        <div class="col text-end pt-1">
+            <a asp-controller="NumeroVilla" asp-action="Crear" class="btn btn-outline-success outnone"><i class="bi bi-plus-square-fill"></i> Crear Nuevo Numero de Villa</a>
+        </div>
+    </div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Nombre de la Villa</th>
+                <th>Numero de Villa</th>
+                <th>Detalle Especial</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                    <tr>
+                        <td>@item.Villa.Nombre</td>
+                                <td>@item.VillaNro</td>
+                                <td>@item.DetalleEspecial</td>
+                        <td>
+                                <a asp-controller="NumeroVilla" asp-action="Actualizar" asp-route-id="@item.Id" class="btn btn-info text-white outnone"><i class="bi bi-pencil-square"></i> </a>
+                                <a asp-controller="NumeroVilla" asp-action="Remover" asp-route-id="@item.Id" class="btn btn-danger outnone"><i class="bi bi-trash-fill"></i> </a>
+                        </td>
+                    </tr>
+            }
+        </tbody>
+    </table>
+
+</div>
